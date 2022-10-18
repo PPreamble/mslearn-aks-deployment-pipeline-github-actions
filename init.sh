@@ -46,3 +46,13 @@ echo "-> ACR Login Username: $ACR_USERNAME"
 echo "-> ACR Password: $ACR_PASSWORD"
 echo "-> AKS Cluster Name: $ACR_NAME"
 echo "-> AKS DNS Zone Name: $DNS_NAME"
+
+
+# Installation concluded, copy these values and store them, you'll use them later in this exercise:
+# -> Resource Group Name: mslearn-gh-pipelines-10454
+# -> ACR Name: contosocontainerregistry6035
+# -> ACR Login Username: contosocontainerregistry6035
+# -> ACR Password: td4EQUZ=GrOaubwDInjJdrd+6el23/wE
+# -> AKS Cluster Name: contosocontainerregistry6035
+# -> AKS DNS Zone Name: bdfc04e1e3bc44888cdc.eastus.aksapp.io
+# -> Github PAT: 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
