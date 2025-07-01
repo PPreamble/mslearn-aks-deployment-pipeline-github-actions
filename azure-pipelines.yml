@@ -18,3 +18,10 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '8.x'
+- script: dotnet tool install --global Microsoft.SqlPackage --version <version>
+  displayName: 'Install specific version of SqlPackage'
