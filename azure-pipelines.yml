@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: 'DDL-SSO'  # Replace with your agent pool name
+  name: 'DDL-SSO-AgentPool'  # Replace with your agent pool name
 
 steps:
 - script: |
