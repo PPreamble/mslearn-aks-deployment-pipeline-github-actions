@@ -7,7 +7,7 @@ pool:
 steps:
 - powershell: |
     # Define the URL for the SqlPackage installer (update to the latest version)
-    $url = "https://aka.ms/sqlpackage"
+    $url = "https://go.microsoft.com/fwlink/?linkid=2316204"
     
     # Define the path to download the installer
     $installerPath = "$(System.DefaultWorkingDirectory)\SqlPackage.zip"
