@@ -41,7 +41,3 @@ steps:
     & "$(System.DefaultWorkingDirectory)\SqlPackage\SqlPackage.exe" /?
   displayName: 'Install SqlPackage'
 
-- powershell: |
-    # Your subsequent steps that use SqlPackage
-    & "$(System.DefaultWorkingDirectory)\SqlPackage\SqlPackage.exe" /version"
-  displayName: 'Check SqlPackage Is Installed'
