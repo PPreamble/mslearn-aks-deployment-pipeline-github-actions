@@ -1,22 +1,31 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
 pool:
-  vmImage: windows2019
-  name: DDL-SSO-AgentPool
+  name: 'DDL-SSO'  # Replace with your agent pool name
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '8.x'
-- script: dotnet tool install --global Microsoft.SqlPackage --version <version>
-  displayName: 'Install specific version of SqlPackage'
+- script: |
+    # Define the URL for the SqlPackage installer
+    $url = "https://aka.ms/sqlpackage"
+    
+    # Define the path to download the installer
+    $installerPath = "$(System.DefaultWorkingDirectory)\SqlPackage.zip"
+    
+    # Download the SqlPackage installer
+    Invoke-WebRequest -Uri $url -OutFile $installerPath
+    
+    # Unzip the installer
+    Expand-Archive -Path $installerPath -DestinationPath "$(System.DefaultWorkingDirectory)\SqlPackage"
+    
+    # Add SqlPackage to the PATH
+    $env:Path += ";$(System.DefaultWorkingDirectory)\SqlPackage"
+    
+    # Verify installation
+    & "$(System.DefaultWorkingDirectory)\SqlPackage\SqlPackage.exe" /?
+  displayName: 'Install SqlPackage'
+  
+- script: |
+    # Your subsequent steps that use SqlPackage
+    & "$(System.DefaultWorkingDirectory)\SqlPackage\SqlPackage.exe" /Action:Publish /SourceFile:"path_to_your_dacpac" /TargetConnectionString:"your_connection_string"
+  displayName: 'Publish DACPAC'
