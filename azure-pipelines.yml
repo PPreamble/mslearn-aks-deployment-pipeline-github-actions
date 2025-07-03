@@ -43,5 +43,5 @@ steps:
 
 - powershell: |
     # Your subsequent steps that use SqlPackage
-    & "$(System.DefaultWorkingDirectory)\SqlPackage\SqlPackage.exe" /Action:Publish /SourceFile:"path_to_your_dacpac" /TargetConnectionString:"your_connection_string"
-  displayName: 'Publish DACPAC'
+    & "$(System.DefaultWorkingDirectory)\SqlPackage\SqlPackage.exe" /version"
+  displayName: 'Check SqlPackage Is Installed'
