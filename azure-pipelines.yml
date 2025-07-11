@@ -39,11 +39,11 @@ steps:
     & "$(System.DefaultWorkingDirectory)\SqlPackage\SqlPackage.exe" /?
   displayName: 'Install SqlPackage'
 
-- task: SqlAzureDacpacDeployment@1
-  inputs:
-    azureSubscription: 'TEE-DDL-Dev-ADO'
-    AuthenticationType: 'connectionString'
-    ConnectionString: 'Server=tcp:ucddl-sqlserver-qa.database.windows.net,1433;Initial Catalog=UCDDLDBQA;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication="Active Directory Default";'
-    deployType: 'InlineSqlTask'
-    SqlInline: 'show tables;'
-    IpDetectionMethod: 'AutoDetect'
+# - task: SqlAzureDacpacDeployment@1
+#   inputs:
+#     azureSubscription: 'TEE-DDL-Dev-ADO'
+#     AuthenticationType: 'connectionString'
+#     ConnectionString: 'Server=tcp:ucddl-sqlserver-qa.database.windows.net,1433;Initial Catalog=UCDDLDBQA;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication="Active Directory Default";'
+#     deployType: 'InlineSqlTask'
+#     SqlInline: 'show tables;'
+#     IpDetectionMethod: 'AutoDetect'
