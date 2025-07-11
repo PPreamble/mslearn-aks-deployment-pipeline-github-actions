@@ -1,7 +1,10 @@
 
 pool:
   name: 'DDL-SSO-AgentPool'  # Replace with your agent pool name
-
+  demands:
+    - sqlpackage
+    - Agent.Version -gtVersion 2.165.0
+    
 steps:
 # - powershell: |
 #     # Define the URL for the SqlPackage installer (update to the latest version)
