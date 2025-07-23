@@ -45,9 +45,10 @@ steps:
 
 - task: SqlAzureDacpacDeployment@1
   inputs:
-    azureSubscription: 'TEE-DDL-Dev-ADO'
-    AuthenticationType: 'connectionString'
-    ConnectionString: 'Server=tcp:ucddl-sqlserver-qa.database.windows.net,1433;Initial Catalog=UCDDLDBQA;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication="Active Directory Default";'
+    azureSubscription: 'UCSF_DDL_SC'
+    AuthenticationType: 'aadAuthenticationIntegrated'
+    ServerName: 'ucddl-sqlserver-qa.database.windows.net'
+    DatabaseName: 'UCDDLDBQA'
     deployType: 'InlineSqlTask'
-    SqlInline: 'show tables;'
+    SqlInline: 'select top 10 * from [Case].[CaseInfo];'
     IpDetectionMethod: 'AutoDetect'
