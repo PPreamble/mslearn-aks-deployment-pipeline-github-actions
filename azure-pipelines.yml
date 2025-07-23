@@ -6,42 +6,42 @@ pool:
     - Agent.Version -gtVersion 2.165.0
     
 steps:
-# - powershell: |
-#     # Define the URL for the SqlPackage installer (update to the latest version)
-#     $url = "https://go.microsoft.com/fwlink/?linkid=2316204"
+- powershell: |
+    # Define the URL for the SqlPackage installer (update to the latest version)
+    $url = "https://go.microsoft.com/fwlink/?linkid=2316204"
     
-#     # Define the path to download the installer
-#     $installerPath = "$(System.DefaultWorkingDirectory)\SqlPackage.zip"
+    # Define the path to download the installer
+    $installerPath = "$(System.DefaultWorkingDirectory)\SqlPackage.zip"
     
-#     # Download the SqlPackage installer
-#     try {
-#         Invoke-WebRequest -Uri $url -OutFile $installerPath -ErrorAction Stop
-#     } catch {
-#         Write-Error "Failed to download SqlPackage: $_"
-#         exit 1
-#     }
+    # Download the SqlPackage installer
+    try {
+        Invoke-WebRequest -Uri $url -OutFile $installerPath -ErrorAction Stop
+    } catch {
+        Write-Error "Failed to download SqlPackage: $_"
+        exit 1
+    }
     
-#     # Check if the file was downloaded successfully
-#     if (-Not (Test-Path $installerPath)) {
-#         Write-Error "SqlPackage.zip was not downloaded."
-#         exit 1
-#     }
+    # Check if the file was downloaded successfully
+    if (-Not (Test-Path $installerPath)) {
+        Write-Error "SqlPackage.zip was not downloaded."
+        exit 1
+    }
     
-#     # Unzip the installer
-#     try {
-#         Expand-Archive -Path $installerPath -DestinationPath "$(System.DefaultWorkingDirectory)\SqlPackage" -ErrorAction Stop
-#     } catch {
-#         Write-Error "Failed to unzip SqlPackage: $_"
-#         exit 1
-#     }
+    # Unzip the installer
+    try {
+        Expand-Archive -Path $installerPath -DestinationPath "$(System.DefaultWorkingDirectory)\SqlPackage" -ErrorAction Stop
+    } catch {
+        Write-Error "Failed to unzip SqlPackage: $_"
+        exit 1
+    }
     
-#     # Add SqlPackage to the PATH
-#     $env:Path += ";C:\ProgramData\chocolatey\bin"
+    # Add SqlPackage to the PATH
+    $env:Path += ";C:\ProgramData\chocolatey\bin"
     
 
-#     # Verify installation
-#     & "$(System.DefaultWorkingDirectory)\SqlPackage\SqlPackage.exe" /?
-#   displayName: 'Install SqlPackage'
+    # Verify installation
+    & "$(System.DefaultWorkingDirectory)\SqlPackage\SqlPackage.exe" /?
+  displayName: 'Install SqlPackage'
 
 - task: SqlAzureDacpacDeployment@1
   inputs:
